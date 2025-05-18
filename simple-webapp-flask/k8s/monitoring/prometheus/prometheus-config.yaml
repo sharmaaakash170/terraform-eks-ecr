@@ -1,0 +1,12 @@
+apiVersion: v1 
+kind: ConfigMap 
+metadata:
+  name: prometheus-config 
+data:
+  prometheus.yml: |
+    global: 
+      scrape_interval: 15s
+    scrape_configs:
+      - job_name: 'flask-app'
+        static_configs: 
+          - targets: ['a8329a94daee843a3a132c180ec559ba-1985813634.us-east-1.elb.amazonaws.com']

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: flask-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-app
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+        - name: flask-container
+          image: 891062950211.dkr.ecr.us-east-1.amazonaws.com/terraform-aws-ecr-repository:latest
+          ports:
+            - containerPort: 8000
+          resources: 
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits: 
+              cpu: "200m"
+              memory: "512Mi"
+          
